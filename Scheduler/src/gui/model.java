@@ -2,6 +2,7 @@ package gui;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
@@ -22,13 +23,7 @@ public class model extends AbstractTableModel {
 
 			);
 
-	private model_ausgabe ma;
-
-			public model(model_ausgabe ma) {
-				// TODO Auto-generated constructor stub
-				this.ma = ma;
-			}
-
+	
 			@Override
 			public int getColumnCount() {
 				return 3;
@@ -92,7 +87,6 @@ public class model extends AbstractTableModel {
 				data.add(new Prozess("","",""));
 				int count = getRowCount();
 				fireTableRowsInserted(0, count);
-				ma.fireTableRowsInserted(0, count);
 			}	
 			
 			public void deleteRow(int rowIndex) {
@@ -111,4 +105,9 @@ public class model extends AbstractTableModel {
 			public void setData(ArrayList<Prozess> data) {
 				this.data = data;
 			}	
+			
+			public int[] getZeit() {
+				
+				return null;
+			}
 }

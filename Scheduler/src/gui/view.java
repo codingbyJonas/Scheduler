@@ -69,10 +69,6 @@ public class view extends JFrame {
 		
 		table_1 = new JTable();
 		panel_2.add(table_1, BorderLayout.CENTER);
-		
-		
-		
-	
 	}
 	public JButton get_Append() {
 		return btn_1;

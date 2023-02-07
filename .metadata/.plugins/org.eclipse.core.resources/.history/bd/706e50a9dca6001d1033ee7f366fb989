@@ -1,0 +1,12 @@
+package gui;
+
+public class logic {
+
+	private model model;
+	
+	public logic(model m) {
+		// TODO Auto-generated constructor stub
+		this.model = m;
+	}
+	
+}

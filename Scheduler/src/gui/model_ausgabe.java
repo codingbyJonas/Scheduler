@@ -20,7 +20,7 @@ public class model_ausgabe extends AbstractTableModel {
 	@Override
 	public int getRowCount() {
 		// TODO Auto-generated method stub
-		return (v.getTable().getRowCount()-1)*2+1;
+		return v.getTable().getRowCount()-1;
 	}
 
 	@Override
@@ -34,7 +34,7 @@ public class model_ausgabe extends AbstractTableModel {
 		// TODO Auto-generated method stub
 		switch (columnIndex) {
 		case 0:
-			return m.getData().get((rowIndex+1)/2).name;
+			return m.getData().get(rowIndex+1).name;
 		}
 		return null;
 	}

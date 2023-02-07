@@ -27,11 +27,11 @@ public class controller {
 	}
 	public void initView() {
 		view.getTable().setModel(this.model);
-		view.getAusgabe().setModel(this.model_ausgabe);
 	}
 	public void initController() {
 		view.get_Append().addActionListener(e -> appendEmptyRow(e));
 		view.get_Delete().addActionListener(e -> deleteRow(e));
+		view.get_Run().addActionListener(e -> run(e));
 		view.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				save();
@@ -52,6 +52,10 @@ public class controller {
 	private void deleteRow(ActionEvent e) {
 		int row = view.getTable().getSelectedRow();
 		this.model.deleteRow(row);
+	}
+	
+	private void run(ActionEvent e) {
+		view.getAusgabe().setModel(this.model_ausgabe);
 	}
 	
 	private void save() {
