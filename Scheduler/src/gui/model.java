@@ -9,15 +9,14 @@ import javax.swing.table.AbstractTableModel;
 
 public class model extends AbstractTableModel {
 	
-	String[] columnNames = {"Name", "Priorit‰t", "Zeit"}; 
+	String[] columnNames = {"Name", "Priorit√§t", "Zeit"}; 
 
 	ArrayList<Prozess> data = new ArrayList<>(
 
 			Arrays.asList(
 	
-				new Prozess("Name", "Priorit‰t", "Zeit"),
-				new Prozess("Peter", "12", "1;2;2"),
-				new Prozess("uuuuuu", "12", "1;2;2")
+				new Prozess("Peter", "12" , "1;1;1"),
+				new Prozess("Franz", "1", "3;4;6")
 
 			)
 
@@ -43,7 +42,7 @@ public class model extends AbstractTableModel {
 			case 0:
 				return data.get(row).name;
 			case 1:
-				 return data.get(row).priorit‰t;
+				 return data.get(row).prioritaet;
 			case 2:
 				 return data.get(row).zeit;
 			}
@@ -60,9 +59,6 @@ public class model extends AbstractTableModel {
 			}
 	
 			public boolean isCellEditable(int row, int col) {			
-				if (row==0) {
-					return false;
-				}
 				return true;
 			}
 
@@ -73,10 +69,10 @@ public class model extends AbstractTableModel {
 					p.name = (String) value;
 					break;
 				 case 1:
-					p.priorit‰t = (String) value;
+					p.prioritaet = (String) value;
 					break;
 				 case 2:
-					p.zeit = (String) value;
+					p.setZeit((String) value);
 					break;
 				}
 			
@@ -84,7 +80,7 @@ public class model extends AbstractTableModel {
 
 			public void appendEmptyRow() {
 				// TODO Auto-generated method stub
-				data.add(new Prozess("","",""));
+				data.add(new Prozess("","" ,""));
 				int count = getRowCount();
 				fireTableRowsInserted(0, count);
 			}	
@@ -105,9 +101,4 @@ public class model extends AbstractTableModel {
 			public void setData(ArrayList<Prozess> data) {
 				this.data = data;
 			}	
-			
-			public int[] getZeit() {
-				
-				return null;
-			}
 }

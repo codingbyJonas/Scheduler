@@ -10,9 +10,9 @@ public class app {
 		
 		m = new model();
 		v = new view();
-		ma = new model_ausgabe(v, m);
-		c = new controller(m, ma, v);
 		l = new logic(m);
+		ma = new model_ausgabe(v, m, l);
+		c = new controller(m, ma, v);
 		c.initController();
 		v.setVisible(true);
 	}

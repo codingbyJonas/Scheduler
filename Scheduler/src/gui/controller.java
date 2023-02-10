@@ -55,6 +55,7 @@ public class controller {
 	}
 	
 	private void run(ActionEvent e) {
+		
 		view.getAusgabe().setModel(this.model_ausgabe);
 	}
 	

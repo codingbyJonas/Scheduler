@@ -4,21 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class logic {
-
-	private model model;
-	int size = 1;
-	ArrayList<ArrayList<String>> zeit = new ArrayList<ArrayList<String>>(size);
+	
+	private model m;
+	ArrayList<Object> prio = new ArrayList<Object>();
 	
 	public logic(model m) {
 		// TODO Auto-generated constructor stub
-		this.model = m;
+		this.m = m;
 	}
-	
-	public int zeiten() {
-		  for(int i = 0; i < size; i++)  {
-		        zeit.add(new ArrayList<String>());
-		    }
-		return 0;
+
+	public int prio() {
+		int s = 0;
+		for (int i = 0; i <m.getData().size(); i++) {
+			int s2 = Integer.valueOf((String) m.getData().get(i).prioritaet);
+			if (s2 > s) {
+				s = s2;
+			}
+		}
+		return s;
 	}
 	
 }
