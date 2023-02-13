@@ -8,13 +8,11 @@ import javax.swing.table.AbstractTableModel;
 
 public class model_ausgabe extends AbstractTableModel {
 
-	private view v;
 	private model m;
 	private logic l;
 	
-	public model_ausgabe(view v, model m, logic l) {
+	public model_ausgabe( model m, logic l) {
 		// TODO Auto-generated constructor stub
-		this.v = v;
 		this.m = m;
 		this.l = l;
 	}
@@ -22,7 +20,8 @@ public class model_ausgabe extends AbstractTableModel {
 	@Override
 	public int getRowCount() {
 		// TODO Auto-generated method stub
-		return v.getTable().getRowCount();
+		return m.getData().size();
+		//return v.getTable().getRowCount()*2;
 	}
 
 	@Override
@@ -33,22 +32,58 @@ public class model_ausgabe extends AbstractTableModel {
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		// TODO Auto-generated method stub
-		if (columnIndex == 0) {
-			return m.getData().get(rowIndex).name;
+		int prio;
+		switch (columnIndex) {
+			case 0:
+				return m.getData().get(rowIndex).name;
+			
+			case 1:
+				prio = l.prio();
+				if (m.getData().get(rowIndex).zustand == "w") {
+					m.getData().get(rowIndex).Warten();
+				}
+				else if (prio == m.getData().get(rowIndex).prioritaet) {
+					m.getData().get(rowIndex).Arbeiten();
+				} else {
+					m.getData().get(rowIndex).Belegt();
+				}
+				return m.getData().get(rowIndex).zustand;
+				
+			case 2:
+				prio = l.prio();
+				if (m.getData().get(rowIndex).zustand == "w") {
+					m.getData().get(rowIndex).Warten();
+				}
+				else if (prio == m.getData().get(rowIndex).prioritaet) {
+					m.getData().get(rowIndex).Arbeiten();
+				} else {
+					m.getData().get(rowIndex).Belegt();
+				}
+				return m.getData().get(rowIndex).zustand;
+				
+			case 3:
+				prio = l.prio();
+				if (m.getData().get(rowIndex).zustand == "w") {
+					m.getData().get(rowIndex).Warten();
+				}
+				else if (prio == m.getData().get(rowIndex).prioritaet) {
+					m.getData().get(rowIndex).Arbeiten();
+				} else {
+					m.getData().get(rowIndex).Belegt();
+				}
+				return m.getData().get(rowIndex).zustand;
+				
+			
 		}
-		else if (columnIndex == 1) {
-			if (l.prio() == Integer.valueOf(m.getData().get(rowIndex).prioritaet)) {
-				m.getData().get(rowIndex).setArbeiten();
-			} else {
-				m.getData().get(rowIndex).setBelegt();
-			}
-			return m.getData().get(rowIndex).zustand;
-		}
-		return rowIndex;
+		return "";
 	}
 	
 	public void setValueAt(Object value, int row, int col) {
 		
 	}
+	
+	public boolean isCellEditable(int row, int col) {			
+		return false;
+	}
+
 }

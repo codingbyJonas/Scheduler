@@ -11,7 +11,7 @@ public class app {
 		m = new model();
 		v = new view();
 		l = new logic(m);
-		ma = new model_ausgabe(v, m, l);
+		ma = new model_ausgabe(m, l);
 		c = new controller(m, ma, v);
 		c.initController();
 		v.setVisible(true);

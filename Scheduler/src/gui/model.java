@@ -15,8 +15,9 @@ public class model extends AbstractTableModel {
 
 			Arrays.asList(
 	
-				new Prozess("Peter", "12" , "1;1;1"),
-				new Prozess("Franz", "1", "3;4;6")
+				new Prozess("A", 12 , "2,4,6"),
+				new Prozess("B", 10, "1,2,1,2,1"),
+				new Prozess("C", 11 , "2,2,5")
 
 			)
 
@@ -69,7 +70,7 @@ public class model extends AbstractTableModel {
 					p.name = (String) value;
 					break;
 				 case 1:
-					p.prioritaet = (String) value;
+					p.prioritaet = (int) value;
 					break;
 				 case 2:
 					p.setZeit((String) value);
@@ -80,7 +81,7 @@ public class model extends AbstractTableModel {
 
 			public void appendEmptyRow() {
 				// TODO Auto-generated method stub
-				data.add(new Prozess("","" ,""));
+				data.add(new Prozess("", 0 ,""));
 				int count = getRowCount();
 				fireTableRowsInserted(0, count);
 			}	
