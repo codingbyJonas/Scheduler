@@ -7,8 +7,7 @@ public class Prozess {
 	int prioritaet;
 	String zeit;
 	ArrayList<Integer> zeiten = new ArrayList<Integer>();
-	String zustand; //a = arbeitend, w = wartend
-	int aZeit;
+	String zustand; //a = arbeitend, w = wartend, " " = belegt
 
 	public Prozess(String name, int prioritaet, String zeit) {
 		this.name = name;
@@ -33,32 +32,26 @@ public class Prozess {
 		// TODO Auto-generated method stub
 		if(this.zeiten.get(0)!= 0) {
 			this.zeiten.set(0, this.zeiten.get(0)-1);
-			System.out.println(this.name + this.zeiten.get(0));
 			this.zustand = "a";
 		}
 		else {
 			this.zeiten.remove(0);
 			this.prioritaet = prioritaet -2;
-			this.zustand = "";
+			this.zustand = "w";
 		}
-		
+		System.out.println(this.name + " Übrige Zeit:" + this.zeiten.get(0) + " Zustand:" + this.zustand + " Prio:" + this.prioritaet);
 	}
 
-	public void Belegt() {
-		// TODO Auto-generated method stub
-		this.zustand = "";
-	}
-	 
 	public void Warten() {
 		if(this.zeiten.get(0)!= 0) {
 			this.zeiten.set(0, this.zeiten.get(0)-1);
-			System.out.println(this.name + this.zeiten.get(0));
+			this.zustand = "w";
 		}
 		else {
 			this.zeiten.remove(0);
-			this.prioritaet = prioritaet -2;
-			this.zustand = "";
+			this.zustand  = " ";
 		}
+		System.out.println(this.name + " Übrige Zeit:" + this.zeiten.get(0) + " Zustand:" + this.zustand);
 	}
 }
 

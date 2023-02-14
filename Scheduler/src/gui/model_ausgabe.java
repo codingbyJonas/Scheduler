@@ -10,6 +10,7 @@ public class model_ausgabe extends AbstractTableModel {
 
 	private model m;
 	private logic l;
+	int takt;
 	
 	public model_ausgabe( model m, logic l) {
 		// TODO Auto-generated constructor stub
@@ -32,50 +33,10 @@ public class model_ausgabe extends AbstractTableModel {
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		int prio;
-		switch (columnIndex) {
-			case 0:
-				return m.getData().get(rowIndex).name;
-			
-			case 1:
-				prio = l.prio();
-				if (m.getData().get(rowIndex).zustand == "w") {
-					m.getData().get(rowIndex).Warten();
-				}
-				else if (prio == m.getData().get(rowIndex).prioritaet) {
-					m.getData().get(rowIndex).Arbeiten();
-				} else {
-					m.getData().get(rowIndex).Belegt();
-				}
-				return m.getData().get(rowIndex).zustand;
-				
-			case 2:
-				prio = l.prio();
-				if (m.getData().get(rowIndex).zustand == "w") {
-					m.getData().get(rowIndex).Warten();
-				}
-				else if (prio == m.getData().get(rowIndex).prioritaet) {
-					m.getData().get(rowIndex).Arbeiten();
-				} else {
-					m.getData().get(rowIndex).Belegt();
-				}
-				return m.getData().get(rowIndex).zustand;
-				
-			case 3:
-				prio = l.prio();
-				if (m.getData().get(rowIndex).zustand == "w") {
-					m.getData().get(rowIndex).Warten();
-				}
-				else if (prio == m.getData().get(rowIndex).prioritaet) {
-					m.getData().get(rowIndex).Arbeiten();
-				} else {
-					m.getData().get(rowIndex).Belegt();
-				}
-				return m.getData().get(rowIndex).zustand;
-				
-			
-		}
-		return "";
+		Object inhalt = l.inhalt(rowIndex, columnIndex, takt);
+		takt ++;
+		System.out.println(takt);
+		return inhalt;
 	}
 	
 	public void setValueAt(Object value, int row, int col) {

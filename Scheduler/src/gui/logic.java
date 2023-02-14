@@ -26,17 +26,19 @@ public class logic {
 		return s;
 	}
 	
-	public String inhalt(int rowIndex, int columnIndex) {
-		if (m.getData().get(rowIndex).zustand == "w") {
-			m.getData().get(rowIndex).Warten();
-		}
-		else if (prio == m.getData().get(rowIndex).prioritaet) {
-			m.getData().get(rowIndex).Arbeiten();
-		} else {
-			m.getData().get(rowIndex).Belegt();
-		}
-		return m.getData().get(rowIndex).zustand;
-		return null;
+	public int inhalt(int rowIndex, int columnIndex, int takt) {
+		/*if (columnIndex == takt) {
+			if (m.getData().get(rowIndex).zustand == "w") {
+				m.getData().get(rowIndex).Warten();
+			}
+			else if (prio() == m.getData().get(rowIndex).prioritaet) {
+				m.getData().get(rowIndex).Arbeiten();
+			}
+			return m.getData().get(rowIndex).zustand;
+		}*/
+		System.out.println("row" + rowIndex);
+		System.out.println("col" + columnIndex);
+		return rowIndex;
 	}
 	
 }
