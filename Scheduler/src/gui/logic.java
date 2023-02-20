@@ -1,23 +1,22 @@
 package gui;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class logic {
 	
 	private model m;
+	ArrayList<Col> columns = new ArrayList<>();
 	
 	public logic(model m) {
-		// TODO Auto-generated constructor stub
 		this.m = m;
 	}
 
 	public int prio() {
 		int s = 0;
-		for (int i = 0; i <m.getData().size(); i++) {
-			if(m.getData().get(i).zustand == "w");
+		for (int i = 0; i < m.getRowCount(); i++) {
+			if(m.getData().get(i).zustand == "w" || m.getData().get(i).azeit == 5);
 			else {
-				int s2 = m.getData().get(i).prioritaet;
+				int s2 = m.getData().get(i).prio;
 				if (s2 > s) {
 					s = s2;
 				}
@@ -26,19 +25,27 @@ public class logic {
 		return s;
 	}
 	
-	public int inhalt(int rowIndex, int columnIndex, int takt) {
-		/*if (columnIndex == takt) {
-			if (m.getData().get(rowIndex).zustand == "w") {
-				m.getData().get(rowIndex).Warten();
+	public ArrayList<Col> inhalt() {
+		for (int col = 0; col < 20; col++) {
+			columns.add(new Col());
+			for (int row = 0; row < m.getRowCount(); row++) {
+				
+				if (m.getData().get(row).zustand.equals("w")) {
+					m.getData().get(row).Warten();
+				}
+				else if (prio() == m.getData().get(row).prio) {
+					m.getData().get(row).Arbeiten();
+				}
+				columns.get(col).setReihe(m.getData().get(row).zustand);
 			}
-			else if (prio() == m.getData().get(rowIndex).prioritaet) {
-				m.getData().get(rowIndex).Arbeiten();
+		}/*
+		for (int row = 0; row <m.getRowCount(); row++) {
+			for (int col = 0; col <columns.size(); col++) {
+				System.out.print("| " + columns.get(col).getZustand(row) + " ");
 			}
-			return m.getData().get(rowIndex).zustand;
+			System.out.println("|");
 		}*/
-		System.out.println("row" + rowIndex);
-		System.out.println("col" + columnIndex);
-		return rowIndex;
+		return columns;
 	}
 	
 }

@@ -1,7 +1,6 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.awt.GridLayout;
 
 import javax.swing.JFrame;
@@ -9,12 +8,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTable;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.JTextPane;
 
 public class view extends JFrame {
 
@@ -29,13 +22,6 @@ public class view extends JFrame {
 	private JTable table_1;
 
 	public view() {
-		
-		String[] columnNames = {"First Name",
-                "Last Name",
-                "Sport",
-                "# of Years",
-                "Vegetarian"};
-		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 220);
 		contentPane = new JPanel();
@@ -44,7 +30,7 @@ public class view extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		panel = new JPanel();
-		panel.setLayout(new BorderLayout(0,0));
+		panel.setLayout(new BorderLayout(0, 0));
 		contentPane.add(panel, BorderLayout.WEST);
 		
 		table = new JTable();
@@ -64,24 +50,29 @@ public class view extends JFrame {
 		panel_1.add(btn_3);
 		
 		panel_2 = new JPanel();
-		contentPane.add(panel_2, BorderLayout.CENTER);
 		panel_2.setLayout(new BorderLayout(0, 0));
+		contentPane.add(panel_2, BorderLayout.CENTER);
 		
 		table_1 = new JTable();
 		panel_2.add(table_1, BorderLayout.CENTER);
 	}
+	
 	public JButton get_Append() {
 		return btn_1;
 	}
+	
 	public JButton get_Delete() {
 		return btn_2;
 	}
+	
 	public JButton get_Run() {
 		return btn_3;
 	}
+	
 	public JTable getTable(){
 		return table;
 	}
+	
 	public JTable getAusgabe(){
 		return table_1;
 	}
