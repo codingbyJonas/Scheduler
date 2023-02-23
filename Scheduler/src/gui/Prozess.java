@@ -8,8 +8,11 @@ public class Prozess {
 	int prio;
 	String zeit;
 	ArrayList<Integer> zeiten = new ArrayList<Integer>();
-	int azeit = 0;
-	String zustand = " "; //a = arbeitend, w = wartend, " " = belegt
+	int aZeit = 0;
+	int wZeit = 0;
+	String zustand; //a = arbeitend, w = I/O wartend, " " = belegt
+	String nZustand = "";
+	boolean fertig;
 
 	public Prozess(String name, String prioritaet, String zeit) {
 		this.name = name;
@@ -25,7 +28,6 @@ public class Prozess {
 			for (int i = 0; i < zZeiten.length; i++) {
 				this.zeiten.add(Integer.parseInt(zZeiten[i]));
 			}
-			//System.out.println(this.name + " " + this.prio + " " + this.zeiten);
 		}
 	}
 	
@@ -39,48 +41,68 @@ public class Prozess {
 		if (this.prio > 15) {
 			this.prio = 15;
 		}
+		this.zustand = "  /" + this.prio; 
+	}
+	public int getPrio() {
+		return prio;
+	}
+	
+	public String getZustand () {
+		return zustand;
+	}
+	
+	public String getNZustand () {
+		return nZustand;
+	}
+	
+	public boolean getFortschritt() {
+		return fertig;
 	}
 	
 	public void Arbeiten() {
-		if(this.zeiten.get(0) > 0) {
+		this.wZeit = 0;
+		this.zustand = "a";
+		this.aZeit++;
+		/*if (this.aZeit == 5) {
+			this.prio = this.prio-2;
+			this.zustand = "a /" + this.prio;
+			this.nZustand = " ";
+		}
+		else */if (this.zeiten.get(0) > 1) {
 			this.zeiten.set(0, this.zeiten.get(0) -1);
-			this.azeit++;
-			this.zustand = "a";
+			this.nZustand = "a";
 		}
 		else {
-			if (this.zeiten.size() > 0) {
+			this.prio = this.prio-2;
+			this.zustand = "a /" + this.prio;
+			if (this.zeiten.size() > 1) {
 				this.zeiten.remove(0);
-				if (this.prio > 1) {
-					this.prio = this.prio -2;
-				}
-				else {
-					this.prio = 0;
-				}
-				this.zustand = "w";
+				this.nZustand = "w";
 			}
 			else {
-				this.zustand = " ";
+				this.nZustand = " ";
+				fertig = true;
 			}
 		}
-		//System.out.println(this.name + " Übrige Zeit:" + this.zeiten.get(0) + " Zustand:" + this.zustand + " Prio:" + this.prioritaet);
 	}
 
 	public void Warten() {
-		if(this.zeiten.get(0) > 0) {
+		this.aZeit = 0;
+		this.zustand = "w";
+		if (this.zeiten.get(0) > 1) {
 			this.zeiten.set(0, this.zeiten.get(0) -1);
-			this.zustand = "w";
+			this.nZustand = "w";
 		}
 		else {
-			if (this.zeiten.size() > 0) {
-				this.zeiten.remove(0);
-			}
-			this.zustand  = " ";
+			this.zeiten.remove(0);
+			this.nZustand = "";
 		}
-		//System.out.println(this.name + " Übrige Zeit:" + this.zeiten.get(0) + " Zustand:" + this.zustand);
 	}
 	
 	public void Blockiert() {
-		
+		this.aZeit = 0;
+		this.wZeit++;
+		this.zustand = " ";
 	}
 }
 

@@ -23,7 +23,7 @@ public class model_ausgabe extends AbstractTableModel {
 
 	@Override
 	public int getColumnCount() {
-		return 20;
+		return l.getColumns().size();
 	}
 
 	@Override
