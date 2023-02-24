@@ -7,6 +7,8 @@ public class logic {
 	private model m;
 	ArrayList<Col> columns = new ArrayList<>();
 	boolean arbeiten;
+	boolean run = true;
+	int leer;
 	
 	public logic(model m) {
 		this.m = m;
@@ -27,8 +29,8 @@ public class logic {
 	}
 	
 	public ArrayList<Col> inhalt() {
-		//int col = 0;
-		for (int col = 0; col < 21; col++) {
+		int col = 0;
+		while (run){
 			columns.add(new Col());
 			int p = prio();
 			for (int row = 0; row < m.getRowCount(); row++) {
@@ -43,7 +45,19 @@ public class logic {
 					m.getData().get(row).Blockiert();
 				}
 				columns.get(col).setReihe(m.getData().get(row).getZustand());
+				if (columns.get(col).getReihe(row).equals(" ") && leer != 0) {
+					leer = 1;
+				}
+				else {
+					leer = 0;
+				}
 			}
+			if(leer == 1) {
+				columns.remove(col);
+				run = false;
+			}
+			leer = 2;
+			col++;
 		}
 		return columns;
 	}
