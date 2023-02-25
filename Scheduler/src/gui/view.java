@@ -11,6 +11,7 @@ import javax.swing.JButton;
 
 public class view extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
 	private JPanel panel;
@@ -23,7 +24,7 @@ public class view extends JFrame {
 
 	public view() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1000, 500);
+		setBounds(100, 100, 1000, 200);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -37,7 +38,7 @@ public class view extends JFrame {
 		panel.add(table, BorderLayout.NORTH);
 		
 		panel_1 = new JPanel();
-		panel.add(panel_1, BorderLayout.SOUTH);
+		contentPane.add(panel_1, BorderLayout.SOUTH);
 		panel_1.setLayout(new GridLayout(1, 2, 0, 0));
 		
 		btn_1 = new JButton("Append");
@@ -54,7 +55,7 @@ public class view extends JFrame {
 		contentPane.add(panel_2, BorderLayout.CENTER);
 		
 		table_1 = new JTable();
-		panel_2.add(table_1, BorderLayout.CENTER);
+		panel_2.add(table_1, BorderLayout.NORTH);
 	}
 	
 	public JButton get_Append() {

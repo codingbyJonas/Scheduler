@@ -6,9 +6,9 @@ import javax.swing.table.AbstractTableModel;
 
 
 public class model extends AbstractTableModel {
-	
-	String[] columnNames = {"Name", "Priorität", "Zeit"}; 
-	ArrayList<Prozess> data = new ArrayList<>(
+
+	private static final long serialVersionUID = 1L;
+	private ArrayList<Prozess> data = new ArrayList<>(
 		Arrays.asList(
 			new Prozess("A", "12" , "2,4,6"),
 			new Prozess("B", "10", "1,2,1,2,1"),
@@ -30,26 +30,25 @@ public class model extends AbstractTableModel {
 	public Object getValueAt(int row, int col) {
 		switch (col) {
 			case 0:
-				return data.get(row).name;
+				return data.get(row).getName();
 			case 1:
-				return Integer.toString(data.get(row).prio);
+				return data.get(row).getPrio();
 			case 2:
-				return data.get(row).zeit;
+				return data.get(row).getZeit();
 		}
 		return null;	
 	} 
 			
 	public void setValueAt(Object value, int row, int col) {
-		Prozess p = data.get(row);
 		switch (col) {
 			case 0:
-				p.name = (String) value;
+				data.get(row).setName((String) value);
 				break;
 			case 1:
-				p.setPrio((String) value);
+				data.get(row).setPrio((String) value);
 				break;
 			case 2:
-				p.setZeit((String) value);
+				data.get(row).setZeit((String) value);
 				break;
 		}
 	}

@@ -44,6 +44,5 @@ public class controller {
 	private void run(ActionEvent e) {
 		model_ausgabe.setData(logic.getInhalt());
 		view.getAusgabe().setModel(this.model_ausgabe);
-	
 	}
 }

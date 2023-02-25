@@ -5,9 +5,10 @@ import java.util.ArrayList;
 public class logic {
 	
 	private model m;
-	ArrayList<Col> columns = new ArrayList<>();
-	boolean run = true;
-	int leer;
+	private ArrayList<Col> columns = new ArrayList<>();
+	private boolean run = true;
+	private int leer;
+	private boolean arbeiten = false;
 	
 	public logic(model m) {
 		this.m = m;
@@ -16,7 +17,7 @@ public class logic {
 	public int prio() {
 		int s = 0;
 		for (int i = 0; i < m.getRowCount(); i++) {
-			if(m.getData().get(i).getNZustand().equals("w") || m.getData().get(i).getFortschritt() == true) {
+			if(m.getData().get(i).getNZustand().equals("w") || m.getData().get(i).getNZustand().equals(" ")) {
 			}
 			else {
 				if (m.getData().get(i).getPrio() > s) {
@@ -28,8 +29,9 @@ public class logic {
 	}
 	
 	public void run(int col, int row, int p) {
-		if ((m.getData().get(row).getPrio() == p && !m.getData().get(row).getNZustand().equals("w") && !m.getData().get(row).getNZustand().equals(" ")) || m.getData().get(row).getNZustand().equals("a")) {
+		if (((m.getData().get(row).getPrio() == p && !m.getData().get(row).getNZustand().equals("w") && !m.getData().get(row).getNZustand().equals(" ")) || m.getData().get(row).getNZustand().equals("a")) && arbeiten == false) {
 			m.getData().get(row).Arbeiten();
+			arbeiten = true;
 		}
 		else if (m.getData().get(row).getNZustand().equals("w")) {
 			m.getData().get(row).Warten();
@@ -59,12 +61,9 @@ public class logic {
 				run = false;
 			}
 			leer = 2;
+			arbeiten = false;
 			col++;
 		}
-		return columns;
-	}
-	
-	public ArrayList<Col> getColumns() {
 		return columns;
 	}
 }

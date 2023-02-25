@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Col {
 	
-	ArrayList<String> rows = new ArrayList<String>();
+	private ArrayList<String> rows = new ArrayList<String>();
 	
 	//public Col () {
 	//}

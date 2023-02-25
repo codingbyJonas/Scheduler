@@ -6,14 +6,12 @@ import javax.swing.table.AbstractTableModel;
 
 public class model_ausgabe extends AbstractTableModel {
 
+	private static final long serialVersionUID = 1L;
 	private model m;
-	private logic l;
-	int takt;
-	ArrayList<Col> data = new ArrayList<>();
+	private ArrayList<Col> data = new ArrayList<>();
 	
 	public model_ausgabe(model m, logic l) {
 		this.m = m;
-		this.l = l;
 	}
 
 	@Override
@@ -23,7 +21,7 @@ public class model_ausgabe extends AbstractTableModel {
 
 	@Override
 	public int getColumnCount() {
-		return l.getColumns().size();
+		return data.size();
 	}
 
 	@Override
