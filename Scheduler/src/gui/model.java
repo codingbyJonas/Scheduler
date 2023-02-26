@@ -32,7 +32,7 @@ public class model extends AbstractTableModel {
 			case 0:
 				return data.get(row).getName();
 			case 1:
-				return data.get(row).getPrio();
+				return data.get(row).getPrioritaet();
 			case 2:
 				return data.get(row).getZeit();
 		}

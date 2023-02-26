@@ -6,6 +6,7 @@ public class Prozess {
 	
 	private String name; 
 	private String zeit;
+	private String prioritaet;
 	private int prio;
 	private ArrayList<Integer> zeiten = new ArrayList<Integer>();
 	private String zustand; //a = arbeitend, w = I/O wartend, " " = belegt
@@ -24,7 +25,7 @@ public class Prozess {
 			this.nZustand = "a";
 		}
 		else {
-			if (this.prio > 0) {
+			if (this.prio > 1) {
 				this.prio = this.prio-2;
 			}
 			else {
@@ -58,15 +59,20 @@ public class Prozess {
 	}
 	
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
+
+	public String getPrioritaet() {
+		return this.prioritaet;
+	}
+	
 	public int getPrio() {
-		return prio;
+		return this.prio;
 	}
 	
 	public void setPrio(String prio) {
@@ -79,6 +85,7 @@ public class Prozess {
 		if (this.prio > 15) {
 			this.prio = 15;
 		}
+		this.prioritaet = String.valueOf(this.prio);
 	}
 
 	public String getZeit() {
